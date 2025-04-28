@@ -58,7 +58,7 @@ public class ClientEntity {
 	private String names;
 	
 	@NotBlank(message = "{client.email.not_blank}")
-	@Size(max = 255, message = "{client.email.size}")
+	@Size(max = 100, message = "{client.email.size}")
 	@Column(name = "email", nullable = false)
 	private String email;
 	

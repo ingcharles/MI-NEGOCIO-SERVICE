@@ -25,7 +25,6 @@ import ec.gob.imark.catalogo.mappers.AddressMapper;
 import ec.gob.imark.catalogo.mappers.ClientMapper;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
-import ec.gob.imark.catalogo.messages.MessageSourceUtil;
 import ec.gob.imark.catalogo.ports.outputs.command.ClientCommandRepository;
 import ec.gob.imark.catalogo.repositories.AddressJpaRepository;
 import ec.gob.imark.catalogo.repositories.ClientAddressJpaRepository;
@@ -44,8 +43,6 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	private final AddressJpaRepository addressJpaRepository;
 	private final ClientAddressJpaRepository clientAddressJpaRepository;
 
-	private final MessageSourceUtil messageSourceUtil;
-
 	/**
 	*
 	* Método que obtiene los datos por id del cliente
@@ -61,7 +58,10 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	ClientRequestRecord request)
 	{
 		clientJpaRepository.findByIdentificationNumber(request.identificationNumber())
-				.ifPresent(_ -> { throw new ClientException(String.format("Cliente ya existe: %s", request.identificationNumber()));});
+				.ifPresent(_ -> {
+					throw new ClientException(
+							String.format("Cliente ya existe: %s", request.identificationNumber()));
+				});
 
 		LocalDateTime now = LocalDateTime.now();
 
@@ -103,6 +103,10 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 		clientJpaRepository.findByIdentificationNumber(request.identificationNumber())
 				.filter(c -> !c.getId().equals(clientExistingEntity.getId()))
 				.ifPresent(c -> { throw new ClientException(String.format("Número de identificación ya utilizado no puede ser modificado: %s", clientExistingEntity.getIdentificationNumber())); });
+
+		//ClientEntity clientExistingEntity = clientQueryService.validateClientExists(request.id());
+
+		//clientQueryService.validateIdentificationNumberUpdate(clientExistingEntity, request.identificationNumber());
 
 		clientExistingEntity.setIdentificationType(request.identificationType());
 		clientExistingEntity.setIdentificationNumber(request.identificationNumber());

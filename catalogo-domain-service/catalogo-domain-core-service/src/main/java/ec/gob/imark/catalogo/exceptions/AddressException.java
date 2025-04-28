@@ -17,8 +17,19 @@
 */
 package ec.gob.imark.catalogo.exceptions;
 
+import lombok.Getter;
+import org.springframework.http.HttpStatus;
+@Getter
 public class AddressException extends GeneralException {
-public AddressException (String message) { super(message); }
-public AddressException (String message, Throwable cause) { super(message, cause); }
+    private final HttpStatus httpStatus;
+
+    public AddressException(String message) {
+        super(message);
+        this.httpStatus = HttpStatus.CONFLICT; // 409
+    }
+
+    public AddressException (String message, Throwable cause, HttpStatus httpStatus) { super(message, cause);
+        this.httpStatus = httpStatus;
+    }
 
 }

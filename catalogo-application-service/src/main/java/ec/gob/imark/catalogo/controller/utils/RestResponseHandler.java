@@ -9,6 +9,8 @@
  */
 package ec.gob.imark.catalogo.controller.utils;
 
+import ec.gob.imark.catalogo.exceptions.AddressException;
+import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,10 +111,23 @@ public class RestResponseHandler {
 
   // Método para manejar la respuesta de error interno del servidor
   public <T> ApiResponseRecord<T> handleInternalServerError(Exception e) {
+    int statusCode = HttpStatus.INTERNAL_SERVER_ERROR.value(); // por defecto 500
+    String messageCode = "Error interno en el servidor"; // por defecto 500
+
+    if (e instanceof ClientException clientException) {
+      statusCode = clientException.getHttpStatus().value();
+      messageCode = e.getMessage();
+    }
+
+    if (e instanceof AddressException addressException) {
+      statusCode = addressException.getHttpStatus().value();
+      messageCode = e.getMessage();
+    }
+
     return new ApiResponseRecord<>(
-            HttpStatus.INTERNAL_SERVER_ERROR.value(),
+            statusCode,
             false,
-            e.getMessage(), // Mensaje opcional
+            messageCode, // Mensaje opcional
             null // No hay datos
     );
   }

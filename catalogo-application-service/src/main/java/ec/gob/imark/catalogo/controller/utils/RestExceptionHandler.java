@@ -9,6 +9,7 @@
  */
 package ec.gob.imark.catalogo.controller.utils;
 
+import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.exceptions.GeneralException;
 import ec.gob.imark.catalogo.logger.LoggerUtil;
 import jakarta.validation.ConstraintViolation;
@@ -107,5 +108,15 @@ public class RestExceptionHandler {
     }
     return "No stack trace available";
   }
+
+  @ExceptionHandler(ClientException.class)
+  public ResponseEntity<Object> handleClientException(ClientException e) {
+    return ResponseEntity
+            .status(e.getHttpStatus())
+            .body(new ErrorResponse(e.getMessage()));
+  }
+
+  // Clase para la respuesta de error
+  record ErrorResponse(String message) {}
 }
 

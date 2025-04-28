@@ -16,15 +16,9 @@
 *
 */
 package ec.gob.imark.catalogo.ports.inputs.query;
-
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
-import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
-import java.util.List;
-
+import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
-import org.springframework.data.domain.Page;
-
+import java.util.List;
 public interface ClientQueryService {
 
 	/**
@@ -37,35 +31,8 @@ public interface ClientQueryService {
 	List<ClientWithMainAddressResponseRecord> searchClients(String search);
 
 
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllClient
-	* @return List<ClientResponseRecord>
-	*/
-	List<ClientResponseRecord> findAllClient();
+	/*ClientEntity validateClientExists(Integer id);
 
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllPaginateClient
-	* @param request
-		* parameter input request
-	* @return Page<ClientResponseRecord>
-	*/
-	Page<ClientResponseRecord> findAllPaginateClient(PaginationRequestRecord request);
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findByIdClient
-	* @param request
-		* parameter input request
-	* @return ClientResponseRecord
-	*/
-	ClientResponseRecord findByIdClient(ClientRequestRecord request);
-
+	void validateIdentificationNumberUpdate(ClientEntity clientExistingEntity, String identificationNumber);
+*/
 }

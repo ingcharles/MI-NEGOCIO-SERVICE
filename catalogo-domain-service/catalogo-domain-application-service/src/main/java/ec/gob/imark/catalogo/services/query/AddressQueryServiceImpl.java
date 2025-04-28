@@ -16,14 +16,11 @@
 *
 */
 package ec.gob.imark.catalogo.services.query;
-import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import ec.gob.imark.catalogo.ports.inputs.query.AddressQueryService;
 import ec.gob.imark.catalogo.ports.outputs.query.AddressQueryRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,7 +33,7 @@ public class AddressQueryServiceImpl implements AddressQueryService {
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findAllAddress
 	* @return List<AddressResponseRecord>
@@ -47,32 +44,5 @@ public class AddressQueryServiceImpl implements AddressQueryService {
 		return addressQueryRepository.findAllAddress(id);
 	}
 
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findAllPaginateAddress
-	* @param request
-		* parameter input request
-	* @return Page<AddressResponseRecord>
-	*/
-	@Override
-	public Page<AddressResponseRecord> findAllPaginateAddress(PaginationRequestRecord request) {
-		return addressQueryRepository.findAllPaginateAddress(request);
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findByIdAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
-	@Override
-	public AddressResponseRecord findByIdAddress(AddressRequestRecord request) {
-		return addressQueryRepository.findByIdAddress(request);
-	}
 
 }

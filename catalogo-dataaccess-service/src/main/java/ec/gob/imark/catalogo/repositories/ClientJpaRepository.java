@@ -21,9 +21,6 @@ import ec.gob.imark.catalogo.entities.ClientEntity;
 
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -36,7 +33,7 @@ public interface ClientJpaRepository extends JpaRepository<ClientEntity, Integer
 	 *
 	 * Método que obtiene los datos por id del cliente
 	 *
-	 * @name findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCase
+	 * @name findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCaseAndAddressesIsMainAddress
 	 * @return List<ClientEntity>>
 	 */
 	@Query("""
@@ -52,50 +49,5 @@ public interface ClientJpaRepository extends JpaRepository<ClientEntity, Integer
 
 
 	Optional<ClientEntity> findByIdentificationNumber(String identificationNumber);
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllClient
-	* @return List<ClientResponseRecord>>
-	*/
-	@Query(value="SELECT t FROM ClientEntity t")
-	List<ClientEntity> findAllClient();
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllPaginateClient
-	* @param search
-		* parameter search
-	* @param pageable
-		* parameter pageable
-	* @return Page<ClientEntity>
-	*/
-	@Query(value="""
-	SELECT t FROM ClientEntity t
-		WHERE (:search IS NULL OR (
-			LOWER(t.identificationType) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.identificationNumber) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.names) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.email) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.cellPhone) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			CAST(t.createdAt AS string) LIKE CONCAT('%', :search, '%') )
-			)
-	""")
-	Page<ClientEntity> findAllPaginateClient(@Param("search") String search, Pageable pageable);
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findByIdClient
-	* @param id
-		* parameter input id
-	* @return ClientEntity
-	*/
-	@Query(value="SELECT t FROM ClientEntity t WHERE t.id = :id")
-	Optional<ClientEntity> findByIdClient(@Param("id") Integer id);
 
 }

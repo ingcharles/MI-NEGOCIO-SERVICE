@@ -20,6 +20,7 @@ package ec.gob.imark.catalogo.records.response;
 import lombok.Builder;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Builder
 public record ClientWithMainAddressResponseRecord(
@@ -31,7 +32,9 @@ public record ClientWithMainAddressResponseRecord(
 	String cellPhone,
 	String mainProvince,
 	String mainCity,
-	String mainAddress)
+	String mainAddress,
+	LocalDateTime createdAt,
+	LocalDateTime updatedAt)
  implements Serializable {
 
 }

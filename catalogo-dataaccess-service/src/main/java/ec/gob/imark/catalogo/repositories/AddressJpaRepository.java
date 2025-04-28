@@ -33,7 +33,7 @@ public interface AddressJpaRepository extends JpaRepository<AddressEntity, Integ
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findAllAddress
 	* @return List<AddressResponseRecord>>
@@ -43,7 +43,7 @@ public interface AddressJpaRepository extends JpaRepository<AddressEntity, Integ
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findAllPaginateAddress
 	* @param search
@@ -66,7 +66,7 @@ public interface AddressJpaRepository extends JpaRepository<AddressEntity, Integ
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findByIdAddress
 	* @param id

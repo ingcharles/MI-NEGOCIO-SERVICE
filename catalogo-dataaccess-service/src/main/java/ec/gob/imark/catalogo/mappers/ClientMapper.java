@@ -43,6 +43,8 @@ public interface ClientMapper extends GenericMapper<ClientEntity , ClientRespons
 	@Mapping(source = ".", target = "mainProvince", qualifiedByName = "mainAddressMappingProvince")
 	@Mapping(source = ".", target = "mainCity", qualifiedByName = "mainAddressMappingCity")
 	@Mapping(source = ".", target = "mainAddress", qualifiedByName = "mainAddressMappingAddress")
+	@Mapping(source = "createdAt", target = "createdAt")
+	@Mapping(source = "updatedAt", target = "updatedAt")
 	ClientWithMainAddressResponseRecord entityToResponseWithMainAddressRecord(ClientEntity clientEntity);
 
 	@Override

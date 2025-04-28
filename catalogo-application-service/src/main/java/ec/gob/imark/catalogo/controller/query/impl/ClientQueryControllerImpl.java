@@ -19,8 +19,6 @@ package ec.gob.imark.catalogo.controller.query.impl;
 
 import ec.gob.imark.catalogo.ports.inputs.query.ClientQueryService;
 import ec.gob.imark.catalogo.controller.query.ClientQueryController;
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import ec.gob.imark.catalogo.controller.utils.RestResponseHandler;
 import java.util.List;
@@ -49,73 +47,9 @@ public class ClientQueryControllerImpl implements ClientQueryController {
 			if (resultClient.isEmpty()) {
 				return restResponseHandler.handleNoContent();
 			}
-			return restResponseHandler.handleListContent(resultClient);
+			return restResponseHandler.handleListContent("Lista de clientes obtenida exitosamente",resultClient);
 		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
-		}
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllClient
-	* @return <T> ApiResponseRecord<List<T>>
-	*/
-	@Override
-	public <T> ApiResponseRecord<List<T>> findAllClient() {
-		try {
-			List<T> resultClient = (List<T>) clientQueryService.findAllClient();
-			if (resultClient.isEmpty()) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleListContent(resultClient);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
-		}
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllPaginateClient
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T>
-	*/
-	@Override
-	public <T> ApiResponseRecord<T> findAllPaginateClient(PaginationRequestRecord request) {
-		try {
-			T resultClient = (T) clientQueryService.findAllPaginateClient(request);
-			if (resultClient == null) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleContent(resultClient);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
-		}
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findByIdClient
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
-	@Override
-	public <T> ApiResponseRecord<T> findByIdClient(ClientRequestRecord request) {
-		try {
-			T resultClient = (T) clientQueryService.findByIdClient(request);
-			if (resultClient == null) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleContent(resultClient);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
+			return restResponseHandler.handleInternalServerError(e);
 		}
 	}
 

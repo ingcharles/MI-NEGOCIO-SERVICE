@@ -8,21 +8,33 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringDocConfiguration {
-
-  private static final String GROUP = "rest_services";
-  private static final String API_RULES = "/query/**";
+  private static final String GROUP_QUERY = "query-services";
+  private static final String API_RULES_QUERY = "/query/**";
+  private static final String GROUP_COMMAND = "command-services";
+  private static final String API_RULES_COMMAND = "/command/**";
 
   @Bean
-  public GroupedOpenApi getDocket() {
-    return GroupedOpenApi.builder().group(GROUP).pathsToMatch(API_RULES).build();
+  public GroupedOpenApi queryApi() {
+    return GroupedOpenApi.builder()
+            .group(GROUP_QUERY)
+            .pathsToMatch(API_RULES_QUERY)
+            .build();
+  }
+
+  @Bean
+  public GroupedOpenApi commandApi() {
+    return GroupedOpenApi.builder()
+            .group(GROUP_COMMAND)
+            .pathsToMatch(API_RULES_COMMAND)
+            .build();
   }
 
   @Bean
   public OpenAPI customOpenAPI() {
     return new OpenAPI()
         .info(new Info()
-            .title("Consejo de la Judicatura - Evaluaciones - Personal microservicio")
+            .title("Mi negocio microservicio")
             .version("1.0.0")
-            .description("API Rest para lo manipulación de datos de la base datos Personal. "));
+            .description("API Rest para lo manipulación de datos de la base datos clientes y direcciónes. "));
   }
 }

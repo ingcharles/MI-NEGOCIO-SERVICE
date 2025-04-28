@@ -17,13 +17,12 @@
 */
 package ec.gob.imark.catalogo.controller.query;
 
-import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,40 +32,22 @@ public interface AddressQueryController {
 
 	/**
 	*
-	* Método que obtiene los datos de la tabla address
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
 	* @name findAllAddress
+    * @param id
+	 * 	parameter Integer
 	* @return <T> ApiResponseRecord<List<T>>
 	*/
 	@GetMapping("/find-id-client/{id}")
-	@Operation(summary = "Método que obtiene los datos de la tabla address")
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Listado de dirrecciones por cliente obtenido exitosamente"),
+			@ApiResponse(responseCode = "400", description = "Solicitud incorrecta"),
+			@ApiResponse(responseCode = "409", description = "Conflicto: La solicitud no puede ser procesada debido a un conflicto en los datos enviados"),
+			@ApiResponse(responseCode = "500", description = "Error interno del servidor")
+	})
+	@Operation(summary = "Método que obtiene los datos de las direcciónes por id cliente")
 	<T> ApiResponseRecord<List<T>> findAllAddress(@PathVariable Integer id);
 
-	/**
-	*
-	* Método que obtiene los datos de la tabla address
-	*
-	* @name FindAllPaginateAddress
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<List<T>>
-	*/
-	@PostMapping("/findAllPaginateAddress")
-	@Operation(summary = "Método que obtiene los datos de la tabla address")
-	<T> ApiResponseRecord<T> findAllPaginateAddress(
-		@Valid @NotNull @RequestBody PaginationRequestRecord request);
-
-	/**
-	*
-	* Método que obtiene los datos de la tabla address
-	*
-	* @name findByIdAddress
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
-	@PostMapping("/findByIdAddress")
-	@Operation(summary = "Método que obtiene los datos de la tabla address")
-	<T> ApiResponseRecord<T> findByIdAddress(@Valid @NotNull @RequestBody AddressRequestRecord request);
 
 }

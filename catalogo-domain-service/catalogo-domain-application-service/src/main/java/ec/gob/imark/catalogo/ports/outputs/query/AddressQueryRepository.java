@@ -16,42 +16,18 @@
 *
 */
 package ec.gob.imark.catalogo.ports.outputs.query;
-import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import java.util.List;
-import org.springframework.data.domain.Page;
 public interface AddressQueryRepository {
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findAllAddress
 	* @return List<AddressResponseRecord>
 	*/
 	 List<AddressResponseRecord> findAllAddress(Integer id);
 
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findAllPaginateAddress
-	* @param request
-		* parameter input request
-	* @return Page<AddressResponseRecord>
-	*/
-	 Page<AddressResponseRecord> findAllPaginateAddress(PaginationRequestRecord request);
-
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findByIdAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
-	AddressResponseRecord findByIdAddress(AddressRequestRecord request);
 
 }

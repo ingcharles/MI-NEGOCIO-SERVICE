@@ -18,12 +18,11 @@
 package ec.gob.imark.catalogo.ports.outputs.command;
 import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
-import java.util.List;
 public interface AddressCommandRepository {
 
 	/**
 	*
-	* Método que guarda los datos por id cliente de la dirección
+	* Método que guarda los datosde las direcciónes por id cliente
 	*
 	* @name saveAddress
 	* @param request
@@ -31,16 +30,5 @@ public interface AddressCommandRepository {
 	* @return AddressResponseRecord
 	*/
 	AddressResponseRecord saveAddress(Integer id, AddressRequestRecord request);
-
-	/**
-	*
-	* Método que actualiza los datos de la dirección
-	*
-	* @name updateAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
-	 AddressResponseRecord updateAddress(AddressRequestRecord request);
 
 }

@@ -3,7 +3,13 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <artifactId>catalogo-domain-core-service</artifactId>
-  <modelVersion>4.0.0</modelVersion>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+    </dependencies>
+    <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>ec.gob.imark</groupId>
     <artifactId>catalogo-domain-service</artifactId>

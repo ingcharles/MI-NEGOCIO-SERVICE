@@ -16,16 +16,13 @@
 *
 */
 package ec.gob.imark.catalogo.services.query;
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
-import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
+import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.ports.inputs.query.ClientQueryService;
 import ec.gob.imark.catalogo.ports.outputs.query.ClientQueryRepository;
-import java.util.List;
-
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
+import net.bytebuddy.asm.Advice.Return;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,44 +45,21 @@ public class ClientQueryServiceImpl implements ClientQueryService {
 		return clientQueryRepository.searchClients(search);
 	}
 
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllClient
-	* @return List<ClientResponseRecord>
-	*/
-	@Override
-	public List<ClientResponseRecord> findAllClient() {
-		return clientQueryRepository.findAllClient();
+	/*@Override
+	public ClientEntity validateClientExists(Integer id) {
+		return clientJpaRepository.findById(id)
+				.orElseThrow(() -> new ClientException(String.format("Cliente no encontrado con Id: %s", id)));
 	}
 
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllPaginateClient
-	* @param request
-		* parameter input request
-	* @return Page<ClientResponseRecord>
-	*/
 	@Override
-	public Page<ClientResponseRecord> findAllPaginateClient(PaginationRequestRecord request) {
-		return clientQueryRepository.findAllPaginateClient(request);
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findByIdClient
-	* @param request
-		* parameter input request
-	* @return ClientResponseRecord
-	*/
-	@Override
-	public ClientResponseRecord findByIdClient(ClientRequestRecord request) {
-		return clientQueryRepository.findByIdClient(request);
-	}
+	public void validateIdentificationNumberUpdate(ClientEntity clientExistingEntity, String identificationNumber) {
+		clientJpaRepository.findByIdentificationNumber(identificationNumber)
+				.filter(c -> !c.getId().equals(clientExistingEntity.getId()))
+				.ifPresent(c -> {
+					throw new ClientException(
+							String.format("Número de identificación ya utilizado no puede ser modificado: %s",
+									clientExistingEntity.getIdentificationNumber()));
+				});
+	}*/
 
 }

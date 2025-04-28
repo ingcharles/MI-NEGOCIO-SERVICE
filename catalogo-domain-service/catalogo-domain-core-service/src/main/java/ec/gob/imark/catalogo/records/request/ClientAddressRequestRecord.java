@@ -16,7 +16,6 @@
 *
 */
 package ec.gob.imark.catalogo.records.request;
-import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Builder;

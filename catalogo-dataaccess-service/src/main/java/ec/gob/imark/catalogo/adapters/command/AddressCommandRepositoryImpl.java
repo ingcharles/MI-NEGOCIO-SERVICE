@@ -20,13 +20,11 @@ package ec.gob.imark.catalogo.adapters.command;
 import ec.gob.imark.catalogo.entities.AddressEntity;
 import ec.gob.imark.catalogo.entities.ClientAddressEntity;
 import ec.gob.imark.catalogo.entities.ClientEntity;
-import ec.gob.imark.catalogo.exceptions.AddressException;
 import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.mappers.AddressMapper;
 import ec.gob.imark.catalogo.mappers.ClientAddressMapper;
 import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
-import ec.gob.imark.catalogo.messages.MessageSourceUtil;
 import ec.gob.imark.catalogo.ports.outputs.command.AddressCommandRepository;
 import ec.gob.imark.catalogo.repositories.AddressJpaRepository;
 import java.time.LocalDateTime;
@@ -43,11 +41,10 @@ public class AddressCommandRepositoryImpl implements AddressCommandRepository {
 	private final ClientJpaRepository clientJpaRepository;
 	private final ClientAddressJpaRepository clientAddressJpaRepository;
 	private final AddressJpaRepository addressJpaRepository;
-	private final MessageSourceUtil messageSourceUtil;
 
 	/**
 	*
-	* Método que guarda los datos por id cliente de la dirección
+	* Método que guarda los datosde las direcciónes por id cliente
 	*
 	* @name saveAddress
 	* @param request
@@ -76,30 +73,6 @@ public class AddressCommandRepositoryImpl implements AddressCommandRepository {
 		clientAddressEntity = clientAddressJpaRepository.save(clientAddressEntity);
 
 		return ClientAddressMapper.INSTANCE.entityToResponseClientRecord(clientAddressEntity);
-	}
-
-	/**
-	*
-	* Método que actualiza los datos de la dirección
-	*
-	* @name updateAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
-	@Override
-	@Transactional
-	public AddressResponseRecord updateAddress(AddressRequestRecord request)
-	{
-		AddressEntity addressEntity = addressJpaRepository.findById(request.id())
-			.orElseThrow(() -> new AddressException(String.format(messageSourceUtil.getMessage("address.findById.exception.notfound"))));
-		addressEntity.setProvince(request.province());
-		addressEntity.setCity(request.city());
-		addressEntity.setAddress(request.address());
-		addressEntity.setCreatedAt(request.createdAt());
-		addressEntity.setUpdatedAt(request.updatedAt());
-		addressEntity = addressJpaRepository.save(addressEntity); 
-		return AddressMapper.INSTANCE.entityToResponseRecord(addressEntity); 
 	}
 
 }

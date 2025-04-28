@@ -16,13 +16,10 @@
 *
 */
 package ec.gob.imark.catalogo.ports.outputs.query;
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
-import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
+import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import java.util.List;
 
-import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
-import org.springframework.data.domain.Page;
+
 public interface ClientQueryRepository {
 
 	/**
@@ -33,37 +30,5 @@ public interface ClientQueryRepository {
 	 * @return List<ClientResponseRecord>
 	 */
 	List<ClientWithMainAddressResponseRecord> searchClients(String search);
-
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllClient
-	* @return List<ClientResponseRecord>
-	*/
-	 List<ClientResponseRecord> findAllClient();
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findAllPaginateClient
-	* @param request
-		* parameter input request
-	* @return Page<ClientResponseRecord>
-	*/
-	 Page<ClientResponseRecord> findAllPaginateClient(PaginationRequestRecord request);
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente
-	*
-	* @name findByIdClient
-	* @param request
-		* parameter input request
-	* @return ClientResponseRecord
-	*/
-	ClientResponseRecord findByIdClient(ClientRequestRecord request);
 
 }

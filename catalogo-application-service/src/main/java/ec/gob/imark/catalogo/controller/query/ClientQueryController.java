@@ -16,14 +16,13 @@
 *
 */
 package ec.gob.imark.catalogo.controller.query;
-
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import io.swagger.v3.oas.annotations.Operation;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,49 +35,22 @@ public interface ClientQueryController {
 	 *
 	 * Método que busca y obtiene los datos del cliente
 	 *
+	 * @param search
+	 * 	parameter String
 	 * @name searchClients
 	 * @return <T> ApiResponseRecord<List<T>>
 	 */
 	@GetMapping("/search-clients")
 	@Operation(summary = "Método que busca y obtiene los datos del cliente")
-	<T> ApiResponseRecord<List<T>> searchClients(@RequestParam String search);
-
-	/**
-	*
-	* Método que obtiene los datos del cliente
-	*
-	* @name findAllClient
-	* @return <T> ApiResponseRecord<List<T>>
-	*/
-	@GetMapping("/findAllClient")
-	@Operation(summary = "Método que obtiene los datos del cliente")
-	<T> ApiResponseRecord<List<T>> findAllClient();
-
-	/**
-	*
-	* Método que obtiene los datos del cliente
-	*
-	* @name FindAllPaginateClient
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<List<T>>
-	*/
-	@PostMapping("/findAllPaginateClient")
-	@Operation(summary = "Método que obtiene los datos del cliente")
-	<T> ApiResponseRecord<T> findAllPaginateClient(
-		@Valid @NotNull @RequestBody PaginationRequestRecord request);
-
-	/**
-	*
-	* Método que obtiene los datos del cliente
-	*
-	* @name findByIdClient
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
-	@PostMapping("/findByIdClient")
-	@Operation(summary = "Método que obtiene los datos del cliente")
-	<T> ApiResponseRecord<T> findByIdClient(@Valid @NotNull @RequestBody ClientRequestRecord request);
+	@ApiResponses(value = {
+			@ApiResponse(responseCode = "200", description = "Listado de clientes encontrado exitosamente"),
+			@ApiResponse(responseCode = "400", description = "Solicitud incorrecta"),
+			@ApiResponse(responseCode = "409", description = "Conflicto: La solicitud no puede ser procesada debido a un conflicto en los datos enviados"),
+			@ApiResponse(responseCode = "500", description = "Error interno del servidor")
+	})
+	<T> ApiResponseRecord<List<T>> searchClients(
+			@Parameter(description = "Texto de búsqueda para filtrar clientes (Número de identidad o Nombre))")
+			@RequestParam String search
+	);
 
 }

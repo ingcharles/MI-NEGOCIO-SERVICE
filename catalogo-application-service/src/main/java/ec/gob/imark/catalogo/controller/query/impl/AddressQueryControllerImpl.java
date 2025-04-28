@@ -19,8 +19,6 @@ package ec.gob.imark.catalogo.controller.query.impl;
 
 import ec.gob.imark.catalogo.ports.inputs.query.AddressQueryService;
 import ec.gob.imark.catalogo.controller.query.AddressQueryController;
-import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
-import ec.gob.imark.catalogo.records.request.PaginationRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import ec.gob.imark.catalogo.controller.utils.RestResponseHandler;
 import java.util.List;
@@ -36,7 +34,7 @@ public class AddressQueryControllerImpl implements AddressQueryController {
 
 	/**
 	*
-	* Método que obtiene los datos por id cliente de la dirección
+	* Método que obtiene los datosde las direcciónes por id cliente
 	*
 	* @name findAllAddress
 	* @return <T> ApiResponseRecord<List<T>>
@@ -51,50 +49,6 @@ public class AddressQueryControllerImpl implements AddressQueryController {
 			return restResponseHandler.handleListContent(resultAddress);
 		} catch (Exception e) {
 			return restResponseHandler.handleInternalServerError(e);
-		}
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findAllPaginateAddress
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T>
-	*/
-	@Override
-	public <T> ApiResponseRecord<T> findAllPaginateAddress(PaginationRequestRecord request) {
-		try {
-			T resultAddress = (T) addressQueryService.findAllPaginateAddress(request);
-			if (resultAddress == null) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleContent(resultAddress);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
-		}
-	}
-
-	/**
-	*
-	* Método que obtiene los datos por id cliente de la dirección
-	*
-	* @name findByIdAddress
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
-	@Override
-	public <T> ApiResponseRecord<T> findByIdAddress(AddressRequestRecord request) {
-		try {
-			T resultAddress = (T) addressQueryService.findByIdAddress(request);
-			if (resultAddress == null) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleContent(resultAddress);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
 		}
 	}
 

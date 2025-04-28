@@ -18,65 +18,22 @@
 package ec.gob.imark.catalogo.repositories;
 
 import ec.gob.imark.catalogo.entities.ClientAddressEntity;
-
 import java.util.List;
-import java.util.Optional;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClientAddressJpaRepository extends JpaRepository<ClientAddressEntity, Integer> {
 
+	/**
+	 *
+	 * Método que obtiene los datos por id del cliente
+	 *
+	 * @name findByClientId
+	 * @param id
+	 * parameter input id
+	 * @return List<ClientAddressEntity>
+	 */
 	List<ClientAddressEntity> findByClientId(Integer id);
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente_address
-	*
-	* @name findAllClientAddress
-	* @return List<ClientAddressResponseRecord>>
-	*/
-	@Query(value="SELECT t FROM ClientAddressEntity t")
-	List<ClientAddressEntity> findAllClientAddress();
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente_address
-	*
-	* @name findAllPaginateClientAddress
-	* @param search
-		* parameter search
-	* @param pageable
-		* parameter pageable
-	* @return Page<ClientAddressEntity>
-	*/
-	@Query(value="""
-	SELECT t FROM ClientAddressEntity t
-		WHERE (:search IS NULL OR (
-			CAST(t.client.id AS string) LIKE CONCAT('%', :search, '%') OR
-			LOWER(t.address.province) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.address.city) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			LOWER(t.address.address) LIKE LOWER(CONCAT('%', :search, '%')) OR
-			CAST(t.isMainAddress AS string) LIKE CONCAT('%', :search, '%') OR
-			CAST(t.createdAt AS string) LIKE CONCAT('%', :search, '%') )
-			)
-	""")
-	Page<ClientAddressEntity> findAllPaginateClientAddress(@Param("search") String search, Pageable pageable);
-
-	/**
-	*
-	* Método que obtiene los datos por id del cliente_address
-	*
-	* @name findByIdClientAddress
-	* @param id
-		* parameter input id
-	* @return ClientAddressEntity
-	*/
-	@Query(value="SELECT t FROM ClientAddressEntity t WHERE t.id = :id")
-	Optional<ClientAddressEntity> findByIdClientAddress(@Param("id") Integer id);
 
 }

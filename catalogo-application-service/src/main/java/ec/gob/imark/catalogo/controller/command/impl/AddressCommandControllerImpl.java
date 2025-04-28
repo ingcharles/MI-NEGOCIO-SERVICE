@@ -35,7 +35,7 @@ public class AddressCommandControllerImpl implements AddressCommandController {
 
 	/**
 	*
-	* Método que guarda los datos de la tabla address
+	* Método que guarda los datos de las direcciónes por id cliente
 	*
 	* @name saveAddress
 	* @param request
@@ -52,28 +52,6 @@ public class AddressCommandControllerImpl implements AddressCommandController {
 			return restResponseHandler.handleContent("Dirección agregada exitosamente",resultAddress);
 		} catch (Exception e) {
 			return restResponseHandler.handleInternalServerError(e);
-		}
-	}
-
-	/**
-	*
-	* Método que actualiza los datos de la tabla address
-	*
-	* @name updateaddress
-	* @param request
-	 * parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
-	@Override
-	public <T> ApiResponseRecord<T> updateAddress(AddressRequestRecord request) {
-		try {
-			T resultAddress = (T) addressCommandService.updateAddress(request);
-			if (resultAddress == null) {
-				return restResponseHandler.handleNoContent();
-			}
-			return restResponseHandler.handleContent(resultAddress);
-		} catch (Exception e) {
-			return restResponseHandler.handleInternalServerError();
 		}
 	}
 
