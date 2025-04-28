@@ -1,0 +1,7 @@
+---
+spring:
+  application:
+    name: CATALOGO-SERVICE
+  config:
+    import: optional:configserver:http://${CJ_EXPEL_IP_SERVER}:8088
+

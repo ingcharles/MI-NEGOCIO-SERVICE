@@ -1,0 +1,96 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /api/exercise
+web:
+  cors:
+    allowed-origins: "*"
+    max-age: 3600
+
+spring:
+  main:
+    lazy-initialization: true
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+  web:
+    resources:
+      cache:
+        cachecontrol:
+          max-age: 24h
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mybusinessdb
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: "excercisedb"
+        globally_quoted_identifiers: true
+  defer-datasource-initialization: false
+  sql:
+    init:
+      platform: postgres
+      mode: always
+  hikari:
+    minimumIdle: 1
+    maximumPoolSize: 1
+    idleTimeout: 30000
+    maxLifetime: 1800000
+    connectionTimeout: 30000
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+  cloud:
+    config:
+      enabled: false
+  messages:
+    basename: i18n/errors,i18n/problems
+    use-code-as-default-message: true
+    mvc:
+      throw-exception-if-no-handler-found: true
+problem:
+  enabled: true
+  cause-chains-enabled: true
+  jackson-module-enabled: true
+  dao-advice-enabled: true
+  security-advice-enabled: true
+  debug-enabled: true
+  stacktrace-enabled: true
+eureka:
+  client:
+    enabled: false
+logging:
+  level:
+    root: INFO
+    ec.gob.imark: INFO
+    org.springframework: INFO
+    net.ttddyy.dsproxy.listener: DEBUG
+    org.springframework.context.i18n: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: INFO
+    org.springframework.jdbc.core.JdbcTemplate: INFO
+    org.springframework.jdbc.core.StatementCreatorUtils: INFO
+    org.springframework.data.redis: INFO
+springdoc:
+  #default-consumes-media-type: "application/json"
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  packagesToScan: ec.gob.imark
