@@ -52,7 +52,7 @@ public interface AddressCommandController {
 	* @name updateAddress
 	* @param request
 		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
+	* @return <T> ApiResponseRecord<T>
 	*/
 	@PostMapping("/updateAddress")
 	@Operation(summary = "Método que actualiza los datos de la tabla address")

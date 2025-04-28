@@ -44,4 +44,6 @@ public interface ClientAddressMapper extends GenericMapper<ClientAddressEntity ,
 	@Mapping(source = "address.address", target = "address")
 	@Mapping(source = "isMainAddress", target = "isMainAddress")
 	AddressResponseRecord entityToResponseClientRecord(ClientAddressEntity clientAddressEntity);
+
+
 }

@@ -27,7 +27,8 @@ public record AddressResponseRecord(
 	String city,
 	String address,
 	String isMainAddress,
-	LocalDateTime createdAt)
+	LocalDateTime createdAt,
+	LocalDateTime updateAt)
  implements Serializable {
 
 }

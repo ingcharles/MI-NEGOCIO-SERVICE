@@ -23,6 +23,7 @@ import ec.gob.imark.catalogo.entities.ClientEntity;
 import ec.gob.imark.catalogo.exceptions.AddressException;
 import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.mappers.AddressMapper;
+import ec.gob.imark.catalogo.mappers.ClientAddressMapper;
 import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import ec.gob.imark.catalogo.messages.MessageSourceUtil;
@@ -72,9 +73,9 @@ public class AddressCommandRepositoryImpl implements AddressCommandRepository {
 		clientAddressEntity.setIsMainAddress(request.isMainAddress());
 		clientAddressEntity.setCreatedAt(now);
 
-		clientAddressJpaRepository.save(clientAddressEntity);
+		clientAddressEntity = clientAddressJpaRepository.save(clientAddressEntity);
 
-		return AddressMapper.INSTANCE.entityToResponseClientRecord(addressEntity);
+		return ClientAddressMapper.INSTANCE.entityToResponseClientRecord(clientAddressEntity);
 	}
 
 	/**

@@ -38,18 +38,5 @@ public interface AddressMapper extends GenericMapper<AddressEntity , AddressResp
 	@Override
 	AddressResponseRecord entityToResponseRecord(AddressEntity addressEntity);
 
-	@Mapping(source = "clientAddresses", target = "isMainAddress", qualifiedByName = "mainAddressMappingProvince")
-	AddressResponseRecord entityToResponseClientRecord(AddressEntity addressEntity);
 
-	@Named("mainAddressMappingProvince")
-	default Boolean mapMainProvince(List<ClientAddressEntity> clientAddresses) {
-		if (clientAddresses == null) {
-			return null;
-		}
-		return clientAddresses.stream()
-				//.filter(ClientAddressEntity::getIsMainAddress)
-				.findFirst()
-				.map(ClientAddressEntity::getIsMainAddress)
-				.orElse(null);
-	}
 }
