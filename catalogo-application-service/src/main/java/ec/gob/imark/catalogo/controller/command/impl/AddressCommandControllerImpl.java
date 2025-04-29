@@ -34,18 +34,20 @@ public class AddressCommandControllerImpl implements AddressCommandController {
 	private final AddressCommandService addressCommandService;
 
 	/**
-	*
-	* Método que guarda los datos de las direcciónes por id cliente
-	*
-	* @name saveAddress
-	* @param request
-		* parameter input request
-	* @return <T> ApiResponseRecord<T> 
-	*/
+	 *
+	 * Método que guarda los datos de la dirección por id cliente
+	 *
+	 * @name saveAddressByIdClient
+	 * @param id
+	 * parameter Integer id
+	 * @param request
+	 * parameter AddressRequestRecord request
+	 * @return <T> ApiResponseRecord<T>
+	 */
 	@Override
-	public <T> ApiResponseRecord<T> saveAddress(@PathVariable Integer id, AddressRequestRecord request) {
+	public <T> ApiResponseRecord<T> saveAddressByIdClient(@PathVariable Integer id, AddressRequestRecord request) {
 		try {
-			T resultAddress = (T) addressCommandService.saveAddress(id, request);
+			T resultAddress = (T) addressCommandService.saveAddressByIdClient(id, request);
 			if (resultAddress == null) {
 				return restResponseHandler.handleNoContent();
 			}

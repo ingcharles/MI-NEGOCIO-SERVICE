@@ -41,7 +41,7 @@ public interface ClientQueryController {
 	 * @return <T> ApiResponseRecord<List<T>>
 	 */
 	@GetMapping("/search-clients")
-	@Operation(summary = "Método que busca y obtiene los datos del cliente")
+	@Operation(summary = "Método que busca y obtiene los datos del cliente por número de identificación o nombre")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Listado de clientes encontrado exitosamente"),
 			@ApiResponse(responseCode = "400", description = "Solicitud incorrecta"),

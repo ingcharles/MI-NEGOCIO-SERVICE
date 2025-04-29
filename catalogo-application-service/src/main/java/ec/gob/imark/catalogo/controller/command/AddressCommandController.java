@@ -34,15 +34,17 @@ public interface AddressCommandController {
 
 	/**
 	*
-	* Método que guarda los datos de las direcciónes por id cliente
+	* Método que guarda los datos de la dirección por id cliente
 	*
-	* @name saveAddress
-	* @param request
-		* parameter input request
+	* @name saveAddressByIdClient
+ * @param id
+	 * parameter Integer id
+ * @param request
+	 * parameter AddressRequestRecord request
 	* @return <T> ApiResponseRecord<T> 
 	*/
 	@PostMapping("/add-id-client/{id}")
-	@Operation(summary = "Método que guarda los datos de las direcciónes por id cliente")
-	<T> ApiResponseRecord<T> saveAddress(@PathVariable Integer id, @Valid @NotNull @RequestBody AddressRequestRecord request);
+	@Operation(summary = "Método que guarda los datos de la dirección por id cliente")
+	<T> ApiResponseRecord<T> saveAddressByIdClient(@PathVariable Integer id, @Valid @NotNull @RequestBody AddressRequestRecord request);
 
 }

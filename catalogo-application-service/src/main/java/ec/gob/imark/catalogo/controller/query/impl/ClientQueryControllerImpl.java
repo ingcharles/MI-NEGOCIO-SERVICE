@@ -35,7 +35,7 @@ public class ClientQueryControllerImpl implements ClientQueryController {
 
 	/**
 	 *
-	 * Método que busca y obtiene los datos del cliente
+	 * Método que busca y obtiene los datos del cliente por número de identificación o nombre
 	 *
 	 * @name searchClients
 	 * @return <T> ApiResponseRecord<List<T>>

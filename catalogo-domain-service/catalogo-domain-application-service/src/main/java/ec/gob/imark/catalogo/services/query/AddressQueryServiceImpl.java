@@ -33,15 +33,15 @@ public class AddressQueryServiceImpl implements AddressQueryService {
 
 	/**
 	*
-	* Método que obtiene los datosde las direcciónes por id cliente
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name findAllAddress
+	* @name findAllAddressByIdClient
 	* @return List<AddressResponseRecord>
 	*/
 	@Override
-	public List<AddressResponseRecord> findAllAddress(Integer id) {
+	public List<AddressResponseRecord> findAllAddressByIdClient(Integer id) {
 
-		return addressQueryRepository.findAllAddress(id);
+		return addressQueryRepository.findAllAddressByIdClient(id);
 	}
 
 

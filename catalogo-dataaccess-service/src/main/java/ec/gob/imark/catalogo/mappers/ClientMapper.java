@@ -22,6 +22,7 @@ import ec.gob.imark.catalogo.entities.ClientAddressEntity;
 import ec.gob.imark.catalogo.entities.ClientEntity;
 import ec.gob.imark.catalogo.mappers.core.GenericMapper;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import org.mapstruct.Mapper;
@@ -29,10 +30,16 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {AddressMapper.class})
+@Mapper(componentModel = "spring", uses = {AddressMapper.class})
 public interface ClientMapper extends GenericMapper<ClientEntity , ClientResponseRecord> {
+
 	ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
+
 	ClientEntity requestRecordToEntity(ClientRequestRecord clientRequestRecord);
+
+	ClientEntity requestUpdateRecordToEntity(ClientUpdateRequestRecord clientUpdateRequestRecord);
+
+	ClientEntity responseRecordToEntity(ClientResponseRecord clientResponseRecord);
 
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "identificationType", target = "identificationType")
@@ -49,6 +56,9 @@ public interface ClientMapper extends GenericMapper<ClientEntity , ClientRespons
 
 	@Override
 	ClientResponseRecord entityToResponseRecord(ClientEntity clientEntity);
+
+	ClientRequestRecord entityToRequestRecord(ClientEntity clientEntity);
+
 
 	@Named("mainAddressMappingProvince")
 	default String mapMainProvince(ClientEntity client) {

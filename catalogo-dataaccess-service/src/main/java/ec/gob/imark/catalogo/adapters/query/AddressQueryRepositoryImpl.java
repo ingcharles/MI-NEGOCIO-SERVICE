@@ -36,13 +36,13 @@ public class AddressQueryRepositoryImpl implements AddressQueryRepository {
 
 	/**
 	*
-	* Método que obtiene los datosde las direcciónes por id cliente
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name findAllAddress
+	* @name findAllAddressByIdClient
 	* @return List<AddressResponseRecord>
 	*/
 	@Override
-	public List<AddressResponseRecord> findAllAddress(Integer id) {
+	public List<AddressResponseRecord> findAllAddressByIdClient(Integer id) {
 
 		List<ClientAddressEntity> addressEntityList = clientAddressJpaRepository.findByClientId(id);
 		return addressEntityList.stream().map(ClientAddressMapper.INSTANCE::entityToResponseClientRecord).toList();

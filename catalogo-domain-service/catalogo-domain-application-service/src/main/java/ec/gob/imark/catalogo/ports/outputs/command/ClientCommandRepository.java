@@ -17,6 +17,7 @@
 */
 package ec.gob.imark.catalogo.ports.outputs.command;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import java.util.List;
 public interface ClientCommandRepository {
@@ -41,7 +42,7 @@ public interface ClientCommandRepository {
 		* parameter input request
 	* @return ClientResponseRecord
 	*/
-	 ClientResponseRecord updateClient(ClientRequestRecord request);
+	 ClientResponseRecord updateClient(ClientUpdateRequestRecord request);
 
 	/**
 	 *

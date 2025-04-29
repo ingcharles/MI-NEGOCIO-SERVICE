@@ -34,17 +34,20 @@ public class AddressCommandServiceImpl implements AddressCommandService {
 
 	/**
 	*
-	* Método que obtiene los datosde las direcciónes por id cliente
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name saveAddress
+	* @name saveAddressByIdClient
+	* @param id
+		* parameter Integer id
 	* @param request
-		* parameter input request
+	  * parameter AddressRequestRecord request
 	* @return AddressResponseRecord
 	*/
 	@Override
 	@Transactional()
-	public AddressResponseRecord saveAddress(Integer id, AddressRequestRecord request) {
-		return addressCommandRepository.saveAddress(id, request);
+	public AddressResponseRecord saveAddressByIdClient(Integer id, AddressRequestRecord request) {
+
+		return addressCommandRepository.saveAddressByIdClient(id, request);
 	}
 
 }

@@ -70,26 +70,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <version>3.2.2</version>
       </plugin>
-      <!-- Plugin para detectar bugs potenciales en el código usando SpotBugs -->
-      <!--<plugin>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <configuration>
-          <failOnError>false</failOnError>
-          <includeTests>true</includeTests>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-            <id>verificar-bugs</id>
-            <phase>verify</phase>
-          </execution>
-        </executions>
-        <groupId>com.github.spotbugs</groupId>
-        <version>4.8.1.0</version>
-      </plugin>-->
-      <!-- Plugin para generar documentación JavaDoc -->
       <plugin>
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
@@ -99,7 +79,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <version>3.6.2</version>
       </plugin>
-      <!-- Plugin para manejar releases y versionado -->
       <plugin>
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
@@ -108,7 +87,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <version>3.0.1</version>
       </plugin>
-      <!-- Plugin para ejecutar análisis de código estático usando PMD -->
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
         <configuration>
@@ -117,8 +95,6 @@
           <failOnViolation>true</failOnViolation>
           <includeTests>true</includeTests>
           <rulesets>
-      <!--<ruleset>http://10.1.22.164/analisis-codigo/analisis-codigo/-/raw/main/pmd-ruleset.xml
-     </ruleset>-->
    </rulesets>
    <skipEmptyReport>false</skipEmptyReport>
    <verbose>true</verbose>
@@ -152,25 +128,6 @@
  <groupId>org.apache.maven.plugins</groupId>
  <version>${maven-pmd-plugin.version}</version>
 </plugin>
-<!-- Plugin para chequear dependencias por vulnerabilidades conocidas -->
-      <!--plugin>
-        <artifactId>dependency-check-maven</artifactId>
-        <configuration>
-          <autoUpdate>true</autoUpdate>
-          <nvdApiDelay>32000</nvdApiDelay>
-          <nvdApiKey>dcb24e47-1766-47a2-b6ef-248f3ed7949c</nvdApiKey>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <groupId>org.owasp</groupId>
-        <version>${dependency-check-maven.version}</version>
-      </plugin-->
-      <!-- Plugin para aplicar reglas de estilo y formato (Checkstyle) -->
       <plugin>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
@@ -233,6 +190,11 @@
       <artifactId>redisson</artifactId>
       <groupId>org.redisson</groupId>
       <version>${redisson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <dependencyManagement>
@@ -324,6 +286,7 @@
     <module>catalogo-domain-service</module>
     <module>catalogo-remote-service</module>
     <module>catalogo-common-service</module>
+    <module>catalogo-test</module>
   </modules>
   <packaging>pom</packaging>
   <parent>

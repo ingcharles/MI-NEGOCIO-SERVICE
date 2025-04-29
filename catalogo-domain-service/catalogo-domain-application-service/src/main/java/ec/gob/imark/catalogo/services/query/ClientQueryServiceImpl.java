@@ -16,13 +16,11 @@
 *
 */
 package ec.gob.imark.catalogo.services.query;
-import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.ports.inputs.query.ClientQueryService;
 import ec.gob.imark.catalogo.ports.outputs.query.ClientQueryRepository;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.asm.Advice.Return;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,7 +33,7 @@ public class ClientQueryServiceImpl implements ClientQueryService {
 
 	/**
 	 *
-	 * * Método que busca y obtiene los datos del cliente
+	 * * Método que busca y obtiene los datos del cliente por número de identificación o nombre
 	 *
 	 * @name findAllClient
 	 * @return List<ClientResponseRecord>
@@ -45,21 +43,5 @@ public class ClientQueryServiceImpl implements ClientQueryService {
 		return clientQueryRepository.searchClients(search);
 	}
 
-	/*@Override
-	public ClientEntity validateClientExists(Integer id) {
-		return clientJpaRepository.findById(id)
-				.orElseThrow(() -> new ClientException(String.format("Cliente no encontrado con Id: %s", id)));
-	}
-
-	@Override
-	public void validateIdentificationNumberUpdate(ClientEntity clientExistingEntity, String identificationNumber) {
-		clientJpaRepository.findByIdentificationNumber(identificationNumber)
-				.filter(c -> !c.getId().equals(clientExistingEntity.getId()))
-				.ifPresent(c -> {
-					throw new ClientException(
-							String.format("Número de identificación ya utilizado no puede ser modificado: %s",
-									clientExistingEntity.getIdentificationNumber()));
-				});
-	}*/
 
 }

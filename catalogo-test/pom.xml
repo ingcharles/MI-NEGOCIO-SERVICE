@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>ec.gob.imark</groupId>
+    <artifactId>CATALOGO-SERVICE</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>catalogo-test</artifactId>
+  <dependencies>
+    <dependency>
+      <groupId>ec.gob.imark</groupId>
+      <artifactId>catalogo-domain-application-service</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>ec.gob.imark</groupId>
+      <artifactId>catalogo-dataaccess-service</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+</project>

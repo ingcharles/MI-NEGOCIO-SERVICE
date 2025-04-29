@@ -16,23 +16,17 @@
 *
 */
 package ec.gob.imark.catalogo.ports.inputs.query;
-import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import java.util.List;
 public interface ClientQueryService {
 
 	/**
 	 *
-	 * Método que busca y obtiene los datos del cliente
+	 * Método que busca y obtiene los datos del cliente por número de identificación o nombre
 	 *
 	 * @name findAllClient
 	 * @return List<ClientResponseRecord>
 	 */
 	List<ClientWithMainAddressResponseRecord> searchClients(String search);
 
-
-	/*ClientEntity validateClientExists(Integer id);
-
-	void validateIdentificationNumberUpdate(ClientEntity clientExistingEntity, String identificationNumber);
-*/
 }

@@ -17,6 +17,7 @@
 */
 package ec.gob.imark.catalogo.services.command;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.ports.inputs.command.ClientCommandService;
 import ec.gob.imark.catalogo.ports.outputs.command.ClientCommandRepository;
@@ -44,6 +45,7 @@ public class ClientCommandServiceImpl implements ClientCommandService {
 	@Override
 	@Transactional()
 	public ClientResponseRecord saveClient(ClientRequestRecord request) {
+
 		return clientCommandRepository.saveClient(request);
 	}
 
@@ -58,7 +60,7 @@ public class ClientCommandServiceImpl implements ClientCommandService {
 	*/
 	@Override
 	@Transactional
-	public ClientResponseRecord updateClient(ClientRequestRecord request) {
+	public ClientResponseRecord updateClient(ClientUpdateRequestRecord request) {
 		return clientCommandRepository.updateClient(request);
 	}
 

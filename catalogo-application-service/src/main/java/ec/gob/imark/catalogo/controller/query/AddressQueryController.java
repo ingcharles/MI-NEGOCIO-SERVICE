@@ -34,7 +34,7 @@ public interface AddressQueryController {
 	*
 	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name findAllAddress
+	* @name findAllAddressByIdClient
     * @param id
 	 * 	parameter Integer
 	* @return <T> ApiResponseRecord<List<T>>
@@ -47,7 +47,7 @@ public interface AddressQueryController {
 			@ApiResponse(responseCode = "500", description = "Error interno del servidor")
 	})
 	@Operation(summary = "Método que obtiene los datos de las direcciónes por id cliente")
-	<T> ApiResponseRecord<List<T>> findAllAddress(@PathVariable Integer id);
+	<T> ApiResponseRecord<List<T>> findAllAddressByIdClient(@PathVariable Integer id);
 
 
 }

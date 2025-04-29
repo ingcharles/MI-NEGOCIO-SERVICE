@@ -22,13 +22,15 @@ public interface AddressCommandRepository {
 
 	/**
 	*
-	* Método que guarda los datosde las direcciónes por id cliente
-	*
-	* @name saveAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
-	AddressResponseRecord saveAddress(Integer id, AddressRequestRecord request);
+	* Método que guarda los datos de la dirección por id cliente
+	 *
+	 * @name saveAddressByIdClient
+	 * @param id
+	 * parameter Integer id
+	 * @param request
+	 * parameter AddressRequestRecord request
+	 * @return AddressResponseRecord
+	 */
+	AddressResponseRecord saveAddressByIdClient(Integer id, AddressRequestRecord request);
 
 }

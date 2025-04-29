@@ -23,7 +23,9 @@ import ec.gob.imark.catalogo.entities.ClientEntity;
 import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.mappers.AddressMapper;
 import ec.gob.imark.catalogo.mappers.ClientMapper;
+import ec.gob.imark.catalogo.ports.inputs.validators.ClientValidationService;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.ports.outputs.command.ClientCommandRepository;
 import ec.gob.imark.catalogo.repositories.AddressJpaRepository;
@@ -42,6 +44,8 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	private final ClientJpaRepository clientJpaRepository;
 	private final AddressJpaRepository addressJpaRepository;
 	private final ClientAddressJpaRepository clientAddressJpaRepository;
+  private final ClientValidationService clientValidationService;
+	private final ClientMapper clientMapper;
 
 	/**
 	*
@@ -57,11 +61,7 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	public ClientResponseRecord saveClient(
 	ClientRequestRecord request)
 	{
-		clientJpaRepository.findByIdentificationNumber(request.identificationNumber())
-				.ifPresent(_ -> {
-					throw new ClientException(
-							String.format("Cliente ya existe: %s", request.identificationNumber()));
-				});
+		clientValidationService.validateIdentificationNumberSave(request.identificationNumber());
 
 		LocalDateTime now = LocalDateTime.now();
 
@@ -95,28 +95,17 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	*/
 	@Override
 	@Transactional
-	public ClientResponseRecord updateClient(ClientRequestRecord request)
+	public ClientResponseRecord updateClient(ClientUpdateRequestRecord request)
 	{
-		ClientEntity clientExistingEntity = clientJpaRepository.findById(request.id())
-				.orElseThrow(() -> new ClientException(String.format("Cliente no encontrado: %s", request.identificationNumber())));
+		ClientResponseRecord clientResponseRecord = clientValidationService.validateClientExists(request.id());
+		ClientEntity clientExistingEntity = clientMapper.responseRecordToEntity(clientResponseRecord);
 
-		clientJpaRepository.findByIdentificationNumber(request.identificationNumber())
-				.filter(c -> !c.getId().equals(clientExistingEntity.getId()))
-				.ifPresent(c -> { throw new ClientException(String.format("Número de identificación ya utilizado no puede ser modificado: %s", clientExistingEntity.getIdentificationNumber())); });
+		clientValidationService.validateIdentificationNumberUpdate(clientExistingEntity.getId(), request.identificationNumber());
 
-		//ClientEntity clientExistingEntity = clientQueryService.validateClientExists(request.id());
-
-		//clientQueryService.validateIdentificationNumberUpdate(clientExistingEntity, request.identificationNumber());
-
-		clientExistingEntity.setIdentificationType(request.identificationType());
-		clientExistingEntity.setIdentificationNumber(request.identificationNumber());
-		clientExistingEntity.setNames(request.names());
-		clientExistingEntity.setEmail(request.email());
-		clientExistingEntity.setCellPhone(request.cellPhone());
-		clientExistingEntity.setUpdatedAt(request.updatedAt());
-		clientExistingEntity.setUpdatedAt(LocalDateTime.now());
-
-		ClientEntity clientEntity = clientJpaRepository.save(clientExistingEntity);
+		ClientEntity clientEntity = clientMapper.requestUpdateRecordToEntity(request);
+		clientEntity.setCreatedAt(clientExistingEntity.getCreatedAt());
+		clientEntity.setUpdatedAt(LocalDateTime.now());
+		clientEntity = clientJpaRepository.save(clientEntity);
 
 		return ClientMapper.INSTANCE.entityToResponseRecord(clientEntity); 
 	}
@@ -134,9 +123,9 @@ public class ClientCommandRepositoryImpl implements ClientCommandRepository {
 	@Transactional
 	public ClientResponseRecord deleteClient(Integer id)
 	{
-		ClientEntity clientEntity = clientJpaRepository.findById(id)
-				.orElseThrow(() -> new ClientException(String.format("Cliente no encontrado con Id: %s", id)));
 
+		ClientResponseRecord clientResponseRecord = clientValidationService.validateClientExists(id);
+		ClientEntity clientEntity = clientMapper.responseRecordToEntity(clientResponseRecord);
 		clientJpaRepository.delete(clientEntity);
 
 		return ClientMapper.INSTANCE.entityToResponseRecord(clientEntity);

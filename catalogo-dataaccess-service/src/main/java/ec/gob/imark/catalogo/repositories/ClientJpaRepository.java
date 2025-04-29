@@ -31,7 +31,7 @@ public interface ClientJpaRepository extends JpaRepository<ClientEntity, Integer
 
 	/**
 	 *
-	 * Método que obtiene los datos por id del cliente
+	 * Método que busca y obtiene los datos del cliente por número de identificación o nombre
 	 *
 	 * @name findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCaseAndAddressesIsMainAddress
 	 * @return List<ClientEntity>>
@@ -47,7 +47,13 @@ public interface ClientJpaRepository extends JpaRepository<ClientEntity, Integer
     """)
 	List<ClientEntity> findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCaseAndAddressesIsMainAddress(@Param("search") String search, @Param("isMainAddress")  Boolean isMainAddress);
 
-
+	/**
+	 *
+	 * Método que busca y obtiene los datos del cliente por número de identificación
+	 *
+	 * @name findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCaseAndAddressesIsMainAddress
+	 * @return List<ClientEntity>>
+	 */
 	Optional<ClientEntity> findByIdentificationNumber(String identificationNumber);
 
 }

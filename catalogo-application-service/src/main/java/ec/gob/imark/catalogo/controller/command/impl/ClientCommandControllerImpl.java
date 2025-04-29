@@ -20,6 +20,7 @@ package ec.gob.imark.catalogo.controller.command.impl;
 import ec.gob.imark.catalogo.ports.inputs.command.ClientCommandService;
 import ec.gob.imark.catalogo.controller.command.ClientCommandController;
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import ec.gob.imark.catalogo.controller.utils.RestResponseHandler;
 import java.util.List;
@@ -65,7 +66,7 @@ public class ClientCommandControllerImpl implements ClientCommandController {
 	* @return <T> ApiResponseRecord<T> 
 	*/
 	@Override
-	public <T> ApiResponseRecord<T> updateClient(ClientRequestRecord request) {
+	public <T> ApiResponseRecord<T> updateClient(ClientUpdateRequestRecord request) {
 		try {
 			T resultClient = (T) clientCommandService.updateClient(request);
 			if (resultClient == null) {

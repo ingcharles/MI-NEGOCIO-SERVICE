@@ -16,18 +16,45 @@
 *
 */
 package ec.gob.imark.catalogo.ports.outputs.query;
+import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ClientQueryRepository {
 
 	/**
 	 *
-	 * * Método que busca y obtiene los datos del cliente
+	 * * Método que busca y obtiene los datos del cliente por id
 	 *
-	 * @name findAllClient
+	 * @name findById
+	 * @param id
+	 * parameter Integer id
 	 * @return List<ClientResponseRecord>
+	 */
+	Optional<ClientResponseRecord> findById(Integer id);
+
+	/**
+	 *
+	 * * Método que busca y obtiene los datos del cliente por número de identificación
+	 *
+	 * @param identificationNumber
+	 * parameter String identificationNumber
+	 * @name findByIdentificationNumber
+	 * @return List<ClientResponseRecord>
+	 */
+	Optional<ClientResponseRecord> findByIdentificationNumber(String identificationNumber);
+
+	/**
+	 *
+	 * * Método que busca y obtiene los datos del cliente por número de identificación o nombre
+	 *
+	 * @param search
+	 * parameter String search
+	 * @name searchClients
+	 * @return List<ClientWithMainAddressResponseRecord>
 	 */
 	List<ClientWithMainAddressResponseRecord> searchClients(String search);
 

@@ -18,6 +18,7 @@
 package ec.gob.imark.catalogo.controller.command;
 
 import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -53,7 +54,7 @@ public interface ClientCommandController {
 	*/
 	@PostMapping("/update")
 	@Operation(summary = "Método que actualiza los datos del cliente")
-	<T> ApiResponseRecord<T> updateClient(@Valid @NotNull @RequestBody ClientRequestRecord request);
+	<T> ApiResponseRecord<T> updateClient(@Valid @NotNull @RequestBody ClientUpdateRequestRecord request);
 
 	/**
 	 *

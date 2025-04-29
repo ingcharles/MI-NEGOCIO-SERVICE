@@ -24,11 +24,11 @@ public interface AddressQueryService {
 
 	/**
 	*
-	* Método que obtiene los datosde las direcciónes por id cliente
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name findAllAddress
+	* @name findAllAddressByIdClient
 	* @return List<AddressResponseRecord>
 	*/
-	List<AddressResponseRecord> findAllAddress(Integer id);
+	List<AddressResponseRecord> findAllAddressByIdClient(Integer id);
 
 }

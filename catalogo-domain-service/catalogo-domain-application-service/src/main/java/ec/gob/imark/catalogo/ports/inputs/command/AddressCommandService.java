@@ -23,13 +23,15 @@ public interface AddressCommandService {
 
 	/**
 	*
-	* Método que gaurda los datosde las direcciónes por id cliente
+	* Método que gaurda los datos de las direcciónes por id cliente
 	*
-	* @name saveAddress
-	* @param request
-		* parameter input request
+	* @name saveAddressByIdClient
+	* @param id
+		* parameter Integer id
+  * @param request
+  * parameter AddressRequestRecord request
 	* @return AddressResponseRecord
 	*/
-	AddressResponseRecord saveAddress(Integer id, AddressRequestRecord request);
+	AddressResponseRecord saveAddressByIdClient(Integer id, AddressRequestRecord request);
 
 }

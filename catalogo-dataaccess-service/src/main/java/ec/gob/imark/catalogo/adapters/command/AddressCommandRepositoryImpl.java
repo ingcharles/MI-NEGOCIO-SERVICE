@@ -23,9 +23,13 @@ import ec.gob.imark.catalogo.entities.ClientEntity;
 import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.mappers.AddressMapper;
 import ec.gob.imark.catalogo.mappers.ClientAddressMapper;
+import ec.gob.imark.catalogo.mappers.ClientMapper;
+import ec.gob.imark.catalogo.ports.inputs.validators.ClientValidationService;
 import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
+import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import ec.gob.imark.catalogo.ports.outputs.command.AddressCommandRepository;
+import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.repositories.AddressJpaRepository;
 import java.time.LocalDateTime;
 import ec.gob.imark.catalogo.repositories.ClientAddressJpaRepository;
@@ -38,27 +42,28 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class AddressCommandRepositoryImpl implements AddressCommandRepository {
-	private final ClientJpaRepository clientJpaRepository;
 	private final ClientAddressJpaRepository clientAddressJpaRepository;
 	private final AddressJpaRepository addressJpaRepository;
-
+  private final ClientValidationService clientValidationService;
 	/**
-	*
-	* Método que guarda los datosde las direcciónes por id cliente
-	*
-	* @name saveAddress
-	* @param request
-		* parameter input request
-	* @return AddressResponseRecord
-	*/
+	 *
+	 * Método que guarda los datos de la dirección por id cliente
+	 *
+	 * @name saveAddressByIdClient
+	 * @param id
+	 * parameter Integer id
+	 * @param request
+	 * parameter AddressRequestRecord request
+	 * @return AddressResponseRecord
+	 */
 	@Override
 	@Transactional
-	public AddressResponseRecord saveAddress(Integer id, AddressRequestRecord request)
+	public AddressResponseRecord saveAddressByIdClient(Integer id, AddressRequestRecord request)
 	{
-		ClientEntity clientEntity = clientJpaRepository.findById(id)
-				.orElseThrow(() -> new ClientException(String.format("Cliente no encontrado con Id: %s", id)));
-
 		LocalDateTime now = LocalDateTime.now();
+
+		ClientResponseRecord clientResponseRecord = clientValidationService.validateClientExists(id);
+		ClientEntity clientEntity = ClientMapper.INSTANCE.responseRecordToEntity(clientResponseRecord);
 
 		AddressEntity addressEntity = AddressMapper.INSTANCE.requestRecordToEntity(request);
 		addressEntity.setCreatedAt(now);

@@ -34,15 +34,15 @@ public class AddressQueryControllerImpl implements AddressQueryController {
 
 	/**
 	*
-	* Método que obtiene los datosde las direcciónes por id cliente
+	* Método que obtiene los datos de las direcciónes por id cliente
 	*
-	* @name findAllAddress
+	* @name findAllAddressByIdClient
 	* @return <T> ApiResponseRecord<List<T>>
 	*/
 	@Override
-	public <T> ApiResponseRecord<List<T>> findAllAddress(Integer id) {
+	public <T> ApiResponseRecord<List<T>> findAllAddressByIdClient(Integer id) {
 		try {
-			List<T> resultAddress = (List<T>) addressQueryService.findAllAddress(id);
+			List<T> resultAddress = (List<T>) addressQueryService.findAllAddressByIdClient(id);
 			if (resultAddress.isEmpty()) {
 				return restResponseHandler.handleNoContent();
 			}
