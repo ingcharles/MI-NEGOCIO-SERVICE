@@ -151,3 +151,27 @@ class ClienteServiceTest {
   }
 
 }
+
+/*
+@Test
+void testCrearClienteConDireccionMatriz_DeberiaLanzarExcepcionCuandoClienteExiste() {
+    // Given - Configuración que debe fallar
+    ClientRequestRecord request = ClientRequestRecord.builder()
+        .identificationNumber("1234567890")  // Un ID que ya existe
+        .build();
+
+    // Simula que el cliente ya existe
+    Mockito.when(clienteRepository.existeClientePorIdentificacion("1234567890"))
+           .thenReturn(true);
+
+    // When/Then - Verifica que se lance la excepción
+    ClientException exception = assertThrows(ClientException.class, () -> {
+        clienteService.crearClienteConDireccionMatriz(request);
+    });
+
+    assertEquals("El cliente con ID 1234567890 ya existe", exception.getMessage());
+
+    // Opcional: verifica interacciones con mocks
+    Mockito.verify(clienteRepository).existeClientePorIdentificacion("1234567890");
+}
+ */
