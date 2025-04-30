@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA CLASE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 4/2/2024

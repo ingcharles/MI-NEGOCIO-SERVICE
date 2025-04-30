@@ -16,14 +16,12 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.concurrent.locks.StampedLock;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
@@ -37,7 +35,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA CLASE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 4/6/2024
@@ -60,16 +58,6 @@ public abstract class AbstractEntity<T extends Serializable, P extends Serializa
 
   @Serial
   private static final long serialVersionUID = -412218241272244613L;
-
-  /*@Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id", nullable = false, unique = true)
-  private T id;
-
-  @NotBlank(message = "{entity.estado.notBlank}")
-  @Size(max = 1, message = "{entity.estado.size}")
-  @Column(name = "estado", nullable = false, length = 1)
-  private String estado;*/
 
   @CreatedBy
   @NotNull(message = "{entity.idPersonaCrea.notNull}")
@@ -115,36 +103,6 @@ public abstract class AbstractEntity<T extends Serializable, P extends Serializa
   @Column(name = "motivoModifica", nullable = false)
   private String motivoModifica;
 
-  @Transient
-  private StampedLock lock = new StampedLock();
-
-  public StampedLock getLock() {
-    return lock;
-  }
-/*
-  @Override
-  public T getId() {
-    return id;
-  }
-
-  @Override
-  public void setId(T id) {
-    this.id = id;
-  }
-
-  @Override
-  public String getEstado() {
-    return estado;
-  }
-
-  @Override
-  public void setEstado(String estado) {
-    this.estado = estado;
-  }
-*/
-  public P getIdPersonaCrea() {
-    return idPersonaCrea;
-  }
 
   @Override
   public void setIdPersonaCrea(P idPersonaCrea) {

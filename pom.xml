@@ -277,7 +277,6 @@
     <module>catalogo-container-service</module>
     <module>catalogo-dataaccess-service</module>
     <module>catalogo-domain-service</module>
-    <module>catalogo-remote-service</module>
     <module>catalogo-common-service</module>
     <module>catalogo-test</module>
   </modules>

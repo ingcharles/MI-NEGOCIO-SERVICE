@@ -10,7 +10,7 @@
 * @package       catalogo-somain-services
 * @subpackage   ec.gob.imark.catalogo.controller.query.impl
 *
-*    ------------- HISTORIAL DE CAMBIOS ------------
+*    ------------- ¡HISTORIAL DE CAMBIOS ------------
 *          1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *
@@ -20,7 +20,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 

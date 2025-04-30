@@ -9,7 +9,7 @@ package ec.gob.imark.catalogo.constants;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA CLASE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 22/11/2023

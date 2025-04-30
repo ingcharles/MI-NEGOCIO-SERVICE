@@ -10,7 +10,7 @@
 * @package       catalogo-application-services
 * @subpackage    ec.gob.imark.catalogo.controller.command.impl
 *
-* HISTORIAL DE CAMBIOS
+* ¡HISTORIAL DE CAMBIOS
 *    1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *
@@ -45,7 +45,7 @@ public class ClientCommandControllerImpl implements ClientCommandController {
 	@Override
 	public <T> ApiResponseRecord<T> saveClient(ClientRequestRecord request) {
 		try {
-			T resultClient = (T) clientCommandService.saveClient(request);
+			@SuppressWarnings("unchecked") T resultClient = (T) clientCommandService.saveClient(request);
 			if (resultClient == null) {
 				return restResponseHandler.handleNoContent();
 			}
@@ -67,7 +67,7 @@ public class ClientCommandControllerImpl implements ClientCommandController {
 	@Override
 	public <T> ApiResponseRecord<T> updateClient(ClientUpdateRequestRecord request) {
 		try {
-			T resultClient = (T) clientCommandService.updateClient(request);
+			@SuppressWarnings("unchecked") T resultClient = (T) clientCommandService.updateClient(request);
 			if (resultClient == null) {
 				return restResponseHandler.handleNoContent();
 			}
@@ -89,7 +89,7 @@ public class ClientCommandControllerImpl implements ClientCommandController {
 	@Override
 	public <T> ApiResponseRecord<T> deleteClient(Integer id) {
 		try {
-			T resultClient = (T) clientCommandService.deleteClient(id);
+			@SuppressWarnings("unchecked") T resultClient = (T) clientCommandService.deleteClient(id);
 			if (resultClient == null) {
 				return restResponseHandler.handleNoContent();
 			}

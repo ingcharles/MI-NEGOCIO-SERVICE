@@ -10,7 +10,7 @@
 * @package       catalogo-domain-services
 * @subpackage   ec.gob.imark.catalogo.controller.query.impl
 *
-*    ------------- HISTORIAL DE CAMBIOS ------------
+*    ------------- ¡HISTORIAL DE CAMBIOS ------------
 *          1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *

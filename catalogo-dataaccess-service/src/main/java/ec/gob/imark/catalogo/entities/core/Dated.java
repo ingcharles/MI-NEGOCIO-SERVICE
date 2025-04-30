@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA INTERFACE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 4/6/2024

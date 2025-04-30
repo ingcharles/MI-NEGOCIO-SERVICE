@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA CLASE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 4/6/2024
@@ -26,11 +26,5 @@ import java.io.Serializable;
  * @since 4/6/2024
  */
 public interface Entity<T> extends Serializable {
-  /*T getId();
 
-  void setId(T id);
-
-  String getEstado();
-
-  void setEstado(String estado);*/
 }

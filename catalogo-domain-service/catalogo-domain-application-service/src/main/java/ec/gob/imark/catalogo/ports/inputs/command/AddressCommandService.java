@@ -10,7 +10,7 @@
 * @package       catalogo-domain-services
 * @subpackage   ec.gob.imark.catalogo.controller.command.impl
 *
-*    ------------- HISTORIAL DE CAMBIOS ------------
+*    ------------- ¡HISTORIAL DE CAMBIOS ------------
 *          1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *
@@ -29,7 +29,7 @@ public interface AddressCommandService {
 	* @param id
 		* parameter Integer id
   * @param request
-  * parameter AddressRequestRecord request
+  * parameter AddressRequestRecord
 	* @return AddressResponseRecord
 	*/
 	AddressResponseRecord saveAddressByIdClient(Integer id, AddressRequestRecord request);

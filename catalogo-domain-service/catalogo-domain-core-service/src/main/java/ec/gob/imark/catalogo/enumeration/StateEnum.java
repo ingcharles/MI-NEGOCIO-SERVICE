@@ -12,7 +12,7 @@ package ec.gob.imark.catalogo.enumeration;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DEL RECORD --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 10/6/2024

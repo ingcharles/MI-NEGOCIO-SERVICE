@@ -10,7 +10,7 @@
 * @package       catalogo-application-services
 * @subpackage    ec.gob.imark.catalogo.controller.command.impl
 *
-* HISTORIAL DE CAMBIOS
+* ¡HISTORIAL DE CAMBIOS
 *    1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *
@@ -41,13 +41,13 @@ public class AddressCommandControllerImpl implements AddressCommandController {
 	 * @param id
 	 * parameter Integer id
 	 * @param request
-	 * parameter AddressRequestRecord request
+	 * parameter AddressRequestRecord
 	 * @return <T> ApiResponseRecord<T>
 	 */
 	@Override
 	public <T> ApiResponseRecord<T> saveAddressByIdClient(@PathVariable Integer id, AddressRequestRecord request) {
 		try {
-			T resultAddress = (T) addressCommandService.saveAddressByIdClient(id, request);
+			@SuppressWarnings("unchecked") T resultAddress = (T) addressCommandService.saveAddressByIdClient(id, request);
 			if (resultAddress == null) {
 				return restResponseHandler.handleNoContent();
 			}

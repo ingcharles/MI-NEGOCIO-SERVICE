@@ -16,7 +16,7 @@ import lombok.Setter;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DE LA CLASE --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 24/09/2024

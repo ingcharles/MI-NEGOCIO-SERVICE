@@ -13,7 +13,7 @@ package ec.gob.imark.catalogo.mappers.core;
  * -- AQUI AÑADIR LA DESCRIPCION DE LA INTERFACE --.
  *
  * <p>
- * Historial de cambios:
+ * ¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  * <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 3/6/2024

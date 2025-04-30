@@ -10,7 +10,7 @@
 * @package       catalogo-application-services
 * @subpackage    ec.gob.imark.catalogo.controller.query.impl
 *
-* HISTORIAL DE CAMBIOS
+* ¡HISTORIAL DE CAMBIOS
 *    1.0.0 - Descripción del cambio inicial - Carlos Anchundia - 06-04-2025
 *    <!-- Añadir nuevas entradas de cambios aquí -->
 *
@@ -43,7 +43,7 @@ public class ClientQueryControllerImpl implements ClientQueryController {
 	@Override
 	public <T> ApiResponseRecord<List<T>> searchClients(String search) {
 		try {
-			List<T> resultClient = (List<T>) clientQueryService.searchClients(search);
+			@SuppressWarnings("unchecked") List<T> resultClient = (List<T>) clientQueryService.searchClients(search);
 			if (resultClient.isEmpty()) {
 				return restResponseHandler.handleNoContent();
 			}

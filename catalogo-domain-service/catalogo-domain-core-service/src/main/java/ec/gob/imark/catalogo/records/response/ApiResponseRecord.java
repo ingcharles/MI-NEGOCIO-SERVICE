@@ -15,7 +15,7 @@ import lombok.Builder;
 /**
  * -- AQUI AÑADIR LA DESCRIPCION DEL RECORD --.
  *
- * <p>Historial de cambios:
+ * <p>¡HISTORIAL DE CAMBIOS:
  *
  * <ul>
  *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 23/09/2024
