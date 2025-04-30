@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: carlos
+      changes:
+        - sqlFile:
+            path: db/scripts/schema/create_schema.sql
+            relativeToChangelogFile: false

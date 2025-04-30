@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: carlos
+      changes:
+        - sqlFile:
+            path: db/scripts/tables/create_tablas.sql
+            relativeToChangelogFile: false

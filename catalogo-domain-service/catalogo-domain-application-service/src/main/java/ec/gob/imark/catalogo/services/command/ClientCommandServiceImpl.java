@@ -21,7 +21,6 @@ import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.ports.inputs.command.ClientCommandService;
 import ec.gob.imark.catalogo.ports.outputs.command.ClientCommandRepository;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

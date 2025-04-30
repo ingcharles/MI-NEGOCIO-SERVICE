@@ -42,8 +42,8 @@ public interface ClientJpaRepository extends JpaRepository<ClientEntity, Integer
         LEFT JOIN ClientAddressEntity ca ON c.id = ca.client.id
         LEFT JOIN AddressEntity a ON ca.address.id = a.id
         WHERE ca.isMainAddress = :isMainAddress
-          AND (LOWER(c.identificationNumber) LIKE LOWER(CONCAT('%', :search, '%'))
-            OR LOWER(c.names) LIKE LOWER(CONCAT('%', :search, '%')))
+          AND ((:search IS NULL or c.identificationNumber = :search)
+            OR (:search IS NULL or LOWER(c.names) LIKE LOWER(CONCAT('%', :search, '%'))))
     """)
 	List<ClientEntity> findByIdentificationNumberContainingIgnoreCaseOrNamesContainingIgnoreCaseAndAddressesIsMainAddress(@Param("search") String search, @Param("isMainAddress")  Boolean isMainAddress);
 

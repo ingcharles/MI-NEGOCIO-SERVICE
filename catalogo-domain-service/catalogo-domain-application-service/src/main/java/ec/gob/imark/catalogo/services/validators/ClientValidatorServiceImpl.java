@@ -7,6 +7,8 @@ import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class ClientValidatorServiceImpl implements ClientValidationService {
@@ -35,9 +37,12 @@ public class ClientValidatorServiceImpl implements ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  public void validateIdentificationNumberSave(String identificationNumber) {
-    clientQueryRepository.findByIdentificationNumber(identificationNumber)
-        .ifPresent(_ -> { throw new ClientException(String.format("Cliente con número de identificación ya existe: %s", identificationNumber));});
+  public boolean validateIdentificationNumberSave(String identificationNumber) {
+    Optional<ClientResponseRecord> result = clientQueryRepository.findByIdentificationNumber(identificationNumber);
+    result.ifPresent(_ -> {
+      throw new ClientException(String.format("Cliente con número de identificación ya existe: %s", identificationNumber));
+    });
+    return true;
   }
 
   /**
@@ -50,12 +55,13 @@ public class ClientValidatorServiceImpl implements ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  public void validateIdentificationNumberUpdate(Integer id, String identificationNumber) {
+  public boolean validateIdentificationNumberUpdate(Integer id, String identificationNumber) {
     clientQueryRepository.findByIdentificationNumber(identificationNumber)
-        .filter(c -> !c.id().equals(id))
-        .ifPresent(c -> {
-          throw new ClientException("Cliente con número de identificación ya está en uso: " + identificationNumber);
-        });
+            .filter(c -> !c.id().equals(id))
+            .ifPresent(c -> {
+              throw new ClientException("Cliente con número de identificación ya está en uso: " + identificationNumber);
+            });
+    return true;
   }
 
 }

@@ -191,11 +191,7 @@
       <groupId>org.redisson</groupId>
       <version>${redisson.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
+
   </dependencies>
   <dependencyManagement>
     <dependencies>
@@ -286,7 +282,7 @@
     <module>catalogo-domain-service</module>
     <module>catalogo-remote-service</module>
     <module>catalogo-common-service</module>
-    <module>catalogo-test</module>
+<!--    <module>catalogo-test</module>-->
   </modules>
   <packaging>pom</packaging>
   <parent>

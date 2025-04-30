@@ -23,7 +23,7 @@ spring:
     ansi:
       enabled: always
   datasource:
-    url: jdbc:postgresql://localhost:5432/mybusinessdb
+    url: jdbc:postgresql://localhost:5434/mybusinessdb
     username: postgres
     password: admin
     driver-class-name: org.postgresql.Driver
@@ -38,8 +38,11 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        default_schema: "excercisedb"
+        #default_schema: "clients"
         globally_quoted_identifiers: true
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
   defer-datasource-initialization: false
   sql:
     init:
@@ -84,6 +87,9 @@ logging:
     org.springframework.jdbc.core.JdbcTemplate: INFO
     org.springframework.jdbc.core.StatementCreatorUtils: INFO
     org.springframework.data.redis: INFO
+    liquibase: INFO
+    liquibase.executor: DEBUG
+    org.springframework.boot.autoconfigure.liquibase: DEBUG
 springdoc:
   api-docs:
     enabled: true
