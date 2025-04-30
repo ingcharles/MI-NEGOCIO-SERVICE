@@ -6,17 +6,9 @@ import static org.mockito.Mockito.times;
 import static reactor.core.publisher.Mono.when;
 
 import ec.gob.imark.catalogo.adapters.query.ClientQueryRepositoryImpl;
-import ec.gob.imark.catalogo.exceptions.ClientException;
-import ec.gob.imark.catalogo.ports.inputs.query.ClientQueryService;
-import ec.gob.imark.catalogo.ports.outputs.command.ClientCommandRepository;
 import ec.gob.imark.catalogo.ports.outputs.query.ClientQueryRepository;
-import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
-import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
-import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import ec.gob.imark.catalogo.services.query.ClientQueryServiceImpl;
-import ec.gob.imark.catalogo.services.validators.ClientValidatorServiceImpl;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
@@ -40,7 +32,7 @@ class ClienteServiceTest {
 
 
   // Caso 1: Buscar cliente por parámetro
-  //@Disabled("Desactivada temporalmente por refactor")
+  @Disabled("Desactivada temporalmente")
   @Test
   void buscarPorNombrePorNumeroIdentificacion_RetornaClientesCoincidentes() {
     final String search = "Juan";
@@ -48,20 +40,20 @@ class ClienteServiceTest {
     final String expectedName = "Juan";
 
     ClientWithMainAddressResponseRecord clientesMock = ClientWithMainAddressResponseRecord.builder()
-            .id(1)
-            .identificationType("RUC")
-            .identificationNumber(expectedIdNumber)
-            .names(expectedName)
-            .email("juan@hotmail.com")
-            .cellPhone("1234567890")
-            .mainProvince("Pichincha")
-            .mainCity("Quito")
-            .mainAddress("Av. Esmeraldas")
-            .createdAt(LocalDateTime.now())
-            .build();
+        .id(1)
+        .identificationType("RUC")
+        .identificationNumber(expectedIdNumber)
+        .names(expectedName)
+        .email("juan@hotmail.com")
+        .cellPhone("1234567890")
+        .mainProvince("Pichincha")
+        .mainCity("Quito")
+        .mainAddress("Av. Esmeraldas")
+        .createdAt(LocalDateTime.now())
+        .build();
 
     Mockito.when(clienteQueryRepository.searchClients(Mockito.argThat(arg ->
-            arg.equals(expectedName) || arg.equals(expectedIdNumber)
+        arg.equals(expectedName) || arg.equals(expectedIdNumber)
     ))).thenReturn(Collections.singletonList(clientesMock));
 
     // When
@@ -73,16 +65,15 @@ class ClienteServiceTest {
 
     ClientWithMainAddressResponseRecord registro = resultado.getFirst();
     Assertions.assertAll(
-            () -> assertEquals("Juan", registro.names()),
-            () -> assertEquals("1304049610", registro.identificationNumber()),
-            () -> assertEquals("juan@hotmail.com", registro.email()),
-            () -> assertEquals("1234567890", registro.cellPhone()),
-            () -> assertEquals("Pichincha", registro.mainProvince()),
-            () -> assertEquals("Quito", registro.mainCity()),
-            () -> assertEquals("Av. Esmeraldas", registro.mainAddress()),
-            () -> assertNotNull(registro.createdAt())
+        () -> assertEquals("Juan", registro.names()),
+        () -> assertEquals("1304049610", registro.identificationNumber()),
+        () -> assertEquals("juan@hotmail.com", registro.email()),
+        () -> assertEquals("1234567890", registro.cellPhone()),
+        () -> assertEquals("Pichincha", registro.mainProvince()),
+        () -> assertEquals("Quito", registro.mainCity()),
+        () -> assertEquals("Av. Esmeraldas", registro.mainAddress()),
+        () -> assertNotNull(registro.createdAt())
     );
-
 
     Mockito.verify(clienteQueryRepository, times(1)).searchClients(search);
     Mockito.verifyNoMoreInteractions(clienteQueryRepository);

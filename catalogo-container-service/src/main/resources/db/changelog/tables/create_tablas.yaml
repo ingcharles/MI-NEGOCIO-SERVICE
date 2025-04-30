@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 6
+      id: 2
       author: carlos
       changes:
         - sqlFile:

@@ -34,7 +34,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <version>${maven-compiler-plugin.version}</version>
       </plugin>
-      <!-- Plugin para generar referencias cruzadas de código fuente para documentación -->
       <plugin>
         <artifactId>maven-jxr-plugin</artifactId>
         <executions>
@@ -50,13 +49,11 @@
         <groupId>org.apache.maven.plugins</groupId>
         <version>3.3.1</version>
       </plugin>
-      <!-- Plugin para ejecutar tests unitarios -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <groupId>org.apache.maven.plugins</groupId>
         <version>3.2.2</version>
       </plugin>
-      <!-- Plugin para ejecutar pruebas de integración y verificación -->
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <executions>
@@ -282,7 +279,7 @@
     <module>catalogo-domain-service</module>
     <module>catalogo-remote-service</module>
     <module>catalogo-common-service</module>
-<!--    <module>catalogo-test</module>-->
+    <module>catalogo-test</module>
   </modules>
   <packaging>pom</packaging>
   <parent>
@@ -324,7 +321,7 @@
     <sonar-maven-plugin.version>3.10.0.2594</sonar-maven-plugin.version>
     <spring-boot-problem-handler.version>1.7</spring-boot-problem-handler.version>
     <spring-boot.version>3.1.3</spring-boot.version>
-    <spring-cloud.version>2023.0.0</spring-cloud.version>
+    <spring-cloud.version>2023.0.3</spring-cloud.version>
     <springdoc.version>1.7.0</springdoc.version>
   </properties>
   <repositories>
