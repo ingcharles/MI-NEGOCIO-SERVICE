@@ -136,7 +136,7 @@
   </profiles>
   <parent>
     <groupId>ec.gob.imark</groupId>
-    <artifactId>CATALOGO-SERVICE</artifactId>
+    <artifactId>MI-NEGOCIO-SERVICE</artifactId>
     <version>1.0.0-SNAPSHOT</version>
   </parent>
 </project>

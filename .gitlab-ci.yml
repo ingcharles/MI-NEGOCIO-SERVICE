@@ -28,8 +28,8 @@ create_docker_image:
 send-to-registry:
   stage: SEND_TO_REGISTRY
   script:
-    - docker tag ec.gob.imark/CATALOGO-SERVICE:1.0.0-SNAPSHOT 10.1.22.164:5000/ec.gob.imark/CATALOGO-SERVICE:1.0.0-SNAPSHOT
-    - docker push 10.1.22.164:5000/ec.gob.imark/CATALOGO-SERVICE:1.0.0-SNAPSHOT
+    - docker tag ec.gob.imark/MI-NEGOCIO-SERVICE:1.0.0-SNAPSHOT 10.1.22.164:5000/ec.gob.imark/MI-NEGOCIO-SERVICE:1.0.0-SNAPSHOT
+    - docker push 10.1.22.164:5000/ec.gob.imark/MI-NEGOCIO-SERVICE:1.0.0-SNAPSHOT
   allow_failure: true
   dependencies:
     - sonar-sonar

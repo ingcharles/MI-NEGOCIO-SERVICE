@@ -1,7 +1,7 @@
 ---
 spring:
   application:
-    name: CATALOGO-SERVICE
+    name: MI-NEGOCIO-SERVICE
   config:
     import: optional:configserver:http://${CJ_EXPEL_IP_SERVER}:8088
 

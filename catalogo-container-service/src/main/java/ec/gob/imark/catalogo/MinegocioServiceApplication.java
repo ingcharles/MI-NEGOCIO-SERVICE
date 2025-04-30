@@ -25,8 +25,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
             title = "API Catálogo .",
             version = "1.0",
             description = "Documentation API Catálogo . v1.0"))
-public class CatalogoServiceApplication {
+public class MinegocioServiceApplication {
   public static void main(String[] args) {
-    SpringApplication.run(CatalogoServiceApplication.class, args);
+    SpringApplication.run(MinegocioServiceApplication.class, args);
   }
 }
