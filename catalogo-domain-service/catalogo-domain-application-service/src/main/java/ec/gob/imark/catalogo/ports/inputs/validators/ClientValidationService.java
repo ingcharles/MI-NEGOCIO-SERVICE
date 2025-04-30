@@ -2,8 +2,6 @@ package ec.gob.imark.catalogo.ports.inputs.validators;
 
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 
-import java.util.Optional;
-
 public interface ClientValidationService {
 
   /**
@@ -25,7 +23,7 @@ public interface ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  boolean validateIdentificationNumberSave(String identificationNumber);
+  void validateIdentificationNumberSave(String identificationNumber);
 
   /**
    *
@@ -37,6 +35,6 @@ public interface ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  boolean validateIdentificationNumberUpdate(Integer id, String identificationNumber);
+  void validateIdentificationNumberUpdate(Integer id, String identificationNumber);
 
 }

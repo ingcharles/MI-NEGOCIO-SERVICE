@@ -19,16 +19,11 @@
 package ec.gob.imark.catalogo.mappers;
 
 import ec.gob.imark.catalogo.entities.AddressEntity;
-import ec.gob.imark.catalogo.entities.ClientAddressEntity;
 import ec.gob.imark.catalogo.mappers.core.GenericMapper;
 import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 @Mapper
 public interface AddressMapper extends GenericMapper<AddressEntity , AddressResponseRecord> {
@@ -37,6 +32,5 @@ public interface AddressMapper extends GenericMapper<AddressEntity , AddressResp
 
 	@Override
 	AddressResponseRecord entityToResponseRecord(AddressEntity addressEntity);
-
 
 }

@@ -23,7 +23,6 @@ import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
 import ec.gob.imark.catalogo.records.request.ClientUpdateRequestRecord;
 import ec.gob.imark.catalogo.records.response.ApiResponseRecord;
 import ec.gob.imark.catalogo.controller.utils.RestResponseHandler;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 

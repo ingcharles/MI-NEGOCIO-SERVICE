@@ -1,11 +1,7 @@
 package ec.gob.imark.catalogo;
 
-import static com.google.common.base.Verify.verify;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
-import static reactor.core.publisher.Mono.when;
-
-import ec.gob.imark.catalogo.adapters.query.ClientQueryRepositoryImpl;
 import ec.gob.imark.catalogo.ports.outputs.query.ClientQueryRepository;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import ec.gob.imark.catalogo.services.query.ClientQueryServiceImpl;

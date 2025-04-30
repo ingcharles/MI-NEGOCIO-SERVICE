@@ -20,7 +20,6 @@ package ec.gob.imark.catalogo.adapters.command;
 import ec.gob.imark.catalogo.entities.AddressEntity;
 import ec.gob.imark.catalogo.entities.ClientAddressEntity;
 import ec.gob.imark.catalogo.entities.ClientEntity;
-import ec.gob.imark.catalogo.exceptions.ClientException;
 import ec.gob.imark.catalogo.mappers.AddressMapper;
 import ec.gob.imark.catalogo.mappers.ClientMapper;
 import ec.gob.imark.catalogo.ports.inputs.validators.ClientValidationService;

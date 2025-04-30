@@ -16,7 +16,6 @@
 *
 */
 package ec.gob.imark.catalogo.ports.outputs.query;
-import ec.gob.imark.catalogo.records.request.ClientRequestRecord;
 import ec.gob.imark.catalogo.records.response.ClientResponseRecord;
 import ec.gob.imark.catalogo.records.response.ClientWithMainAddressResponseRecord;
 import java.util.List;

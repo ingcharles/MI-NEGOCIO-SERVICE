@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  * <p>Historial de cambios:
  *
  * <ul>
- *   <li>1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 4/2/2024
+ *   <li> 1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 4/2/2024
  *       <!-- Añadir nuevas entradas de cambios aquí -->
  * </ul>
  *

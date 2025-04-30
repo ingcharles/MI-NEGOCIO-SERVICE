@@ -12,7 +12,7 @@ package ec.gob.imark.catalogo.constants;
  * <p>Historial de cambios:
  *
  * <ul>
- *   <li>1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 22/11/2023
+ *   <li> 1.0.0 - Descripción del cambio inicial - Francisco.Zabala - 22/11/2023
  *       <!-- Añadir nuevas entradas de cambios aquí -->
  * </ul>
  *

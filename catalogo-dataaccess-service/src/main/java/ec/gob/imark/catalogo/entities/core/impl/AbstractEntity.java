@@ -40,7 +40,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * <p>Historial de cambios:
  *
  * <ul>
- *   <li>1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 4/6/2024
+ *   <li> 1.0.0 - Descripción del cambio inicial - Carlos.Anchundia - 4/6/2024
  *       <!-- Añadir nuevas entradas de cambios aquí -->
  * </ul>
  *

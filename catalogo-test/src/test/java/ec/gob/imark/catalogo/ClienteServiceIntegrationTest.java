@@ -33,7 +33,6 @@ public class ClienteServiceIntegrationTest {
   private ClientQueryServiceImpl clientQueryService;
 
   // Caso 1: Buscar cliente por parámetro
-
   @BeforeEach
   void setUp() {
     AddressRequestRecord direccionPrincipal = AddressRequestRecord.builder()

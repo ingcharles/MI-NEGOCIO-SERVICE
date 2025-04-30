@@ -37,12 +37,11 @@ public class ClientValidatorServiceImpl implements ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  public boolean validateIdentificationNumberSave(String identificationNumber) {
+  public void validateIdentificationNumberSave(String identificationNumber) {
     Optional<ClientResponseRecord> result = clientQueryRepository.findByIdentificationNumber(identificationNumber);
     result.ifPresent(_ -> {
       throw new ClientException(String.format("Cliente con número de identificación ya existe: %s", identificationNumber));
     });
-    return true;
   }
 
   /**
@@ -55,13 +54,12 @@ public class ClientValidatorServiceImpl implements ClientValidationService {
    * @param identificationNumber
    * parameter String identificationNumber
    */
-  public boolean validateIdentificationNumberUpdate(Integer id, String identificationNumber) {
+  public void validateIdentificationNumberUpdate(Integer id, String identificationNumber) {
     clientQueryRepository.findByIdentificationNumber(identificationNumber)
             .filter(c -> !c.id().equals(id))
             .ifPresent(c -> {
               throw new ClientException("Cliente con número de identificación ya está en uso: " + identificationNumber);
             });
-    return true;
   }
 
 }

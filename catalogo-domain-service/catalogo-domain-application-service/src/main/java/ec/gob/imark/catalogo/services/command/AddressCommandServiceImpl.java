@@ -20,7 +20,6 @@ import ec.gob.imark.catalogo.records.request.AddressRequestRecord;
 import ec.gob.imark.catalogo.records.response.AddressResponseRecord;
 import ec.gob.imark.catalogo.ports.inputs.command.AddressCommandService;
 import ec.gob.imark.catalogo.ports.outputs.command.AddressCommandRepository;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
