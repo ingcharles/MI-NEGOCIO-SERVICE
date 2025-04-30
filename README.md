@@ -6,7 +6,7 @@ Desarrollado bajo principios sólidos, arquitectura limpia y dominio rico, este 
 - Integración fluida con ecosistemas cloud-native
 
 ## Características clave
-### 🏗️ Arquitectura
+### Arquitectura
 - **Arquitectura hexagonal (Ports & Adapters)**
     - Dominio aislado de infraestructura
     - **Contratos claros entre capas(Interfaces)**
@@ -32,8 +32,7 @@ Desarrollado bajo principios sólidos, arquitectura limpia y dominio rico, este 
 - Liquibase 4.24.0
 - Hibernate 6.4.4.Final
 - JPA 3.2.5
-- 
-# GIT
+
 ## Clonar el repositorio gitHub
 - git clone https://github.com/ingcharles/MI-NEGOCIO-SERVICE.git
 
